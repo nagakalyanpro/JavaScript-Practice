@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movable Element</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        .draggable {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            position: absolute;
+            cursor: grab;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .draggable:hover {
+            background-color: #c6e4ff;
+        }
+        
+        .draggable:active {
+            cursor: grabbing;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="draggable" id="movableElement">Drag me!</div>
+
+    <script>
+        const draggableElement = document.getElementById('movableElement');
+        let offsetX = 0,
+            offsetY = 0,
+            isDragging = false;
+
+        draggableElement.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            const rect = draggableElement.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            draggableElement.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const x = e.clientX - offsetX;
+            const y = e.clientY - offsetY;
+            draggableElement.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            draggableElement.style.cursor = 'grab';
+        });
+    </script>
+</body>
+
+</html>

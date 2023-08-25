@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Array</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+        
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+        
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Searching Array</h1>
+    <input type="text" id="searchInput" placeholder="Enter a number">
+    <button id="searchButton">Search</button>
+    <p>Array: <span id="arrayContents"></span></p>
+    <p>Search Result: <span id="searchResult"></span></p>
+
+    <script>
+        const arrayContentsElement = document.getElementById('arrayContents');
+        const searchResultElement = document.getElementById('searchResult');
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+
+        const numbers = [7, 2, 10, 4, 1, 8, 3, 6, 5, 9];
+
+        arrayContentsElement.textContent = numbers.join(', ');
+
+        searchButton.addEventListener('click', () => {
+            const searchValue = parseInt(searchInput.value, 10);
+            if (isNaN(searchValue)) {
+                searchResultElement.textContent = 'Invalid input';
+                return;
+            }
+
+            const foundIndex = numbers.indexOf(searchValue);
+            if (foundIndex !== -1) {
+                searchResultElement.textContent = `Result: ${searchValue} found at index ${foundIndex}`;
+            } else {
+                searchResultElement.textContent = 'Result: Not found';
+            }
+        });
+    </script>
+</body>
+
+</html>

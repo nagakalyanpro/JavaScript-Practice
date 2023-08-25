@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Music Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+        
+        audio {
+            display: block;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px;
+        }
+        
+        li {
+            padding: 8px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin: 5px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Music Player</h1>
+    <audio id="audioPlayer" controls>
+        <source src="assets/bgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <ul id="playlist">
+        <li data-src="assets/bgm.mp3">Song 1</li>
+        <li data-src="assets/bgm.mp3">Song 2</li>
+        <!-- Add more songs here -->
+    </ul>
+
+    <script>
+        const audioPlayer = document.getElementById("audioPlayer");
+        const playlist = document.getElementById("playlist");
+        const playlistItems = playlist.querySelectorAll("li");
+
+        playlistItems.forEach(item => {
+            item.addEventListener("click", () => {
+                const src = item.getAttribute("data-src");
+                audioPlayer.src = src;
+                audioPlayer.play();
+            });
+        });
+    </script>
+</body>
+
+</html>

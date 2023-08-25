@@ -1,0 +1,45 @@
+<!-- HTML -->
+<input type="text" id="transactionDescription" placeholder="Enter description">
+<input type="number" id="transactionAmount" placeholder="Enter amount">
+<select id="transactionType">
+    <option value="income">Income</option>
+    <option value="expense">Expense</option>
+</select>
+<button id="addTransactionButton">Add Transaction</button>
+<ul id="transactionList"></ul>
+<p id="balance"></p>
+
+<!-- JavaScript -->
+<script>
+    const addTransactionButton = document.getElementById("addTransactionButton");
+    const transactionDescription = document.getElementById("transactionDescription");
+    const transactionAmount = document.getElementById("transactionAmount");
+    const transactionType = document.getElementById("transactionType");
+    const transactionList = document.getElementById("transactionList");
+    const balance = document.getElementById("balance");
+    let totalBalance = 0;
+
+    addTransactionButton.addEventListener("click", () => {
+        const description = transactionDescription.value.trim();
+        const amount = parseFloat(transactionAmount.value);
+        const type = transactionType.value;
+
+        if (description !== "" && !isNaN(amount)) {
+            const li = document.createElement("li");
+            li.textContent = `${description} - ${type === "income" ? "+" : "-"}$${amount.toFixed(2)}`;
+            transactionList.appendChild(li);
+
+            if (type === "income") {
+                totalBalance += amount;
+            } else {
+                totalBalance -= amount;
+            }
+
+            balance.textContent = `Total Balance: $${totalBalance.toFixed(2)}`;
+
+            // Reset inputs
+            transactionDescription.value = "";
+            transactionAmount.value = "";
+        }
+    });
+</script>

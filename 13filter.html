@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+        
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Filtering Numbers</h1>
+    <button id="filterButton">Filter</button>
+    <p>Original Array: <span id="originalArray"></span></p>
+    <p>Filtered Array: <span id="filteredArray"></span></p>
+
+    <script>
+        const originalArrayElement = document.getElementById('originalArray');
+        const filteredArrayElement = document.getElementById('filteredArray');
+        const filterButton = document.getElementById('filterButton');
+
+        const numbers = [7, 2, 10, 4, 1, 8, 3, 6, 5, 9];
+
+        filterButton.addEventListener('click', () => {
+            const filteredNumbers = numbers.filter(number => number % 2 === 0);
+            originalArrayElement.textContent = numbers.join(', ');
+            filteredArrayElement.textContent = filteredNumbers.join(', ');
+        });
+    </script>
+</body>
+
+</html>

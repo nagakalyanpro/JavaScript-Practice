@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+        
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sorting Numbers</h1>
+    <button id="sortButton">Sort</button>
+    <p>Original Array: <span id="originalArray"></span></p>
+    <p>Sorted Array: <span id="sortedArray"></span></p>
+
+    <script>
+        const originalArrayElement = document.getElementById('originalArray');
+        const sortedArrayElement = document.getElementById('sortedArray');
+        const sortButton = document.getElementById('sortButton');
+
+        const numbers = [7, 2, 10, 4, 1, 8, 3, 6, 5, 9];
+
+        sortButton.addEventListener('click', () => {
+            const sortedNumbers = numbers.slice().sort((a, b) => a - b);
+            originalArrayElement.textContent = numbers.join(', ');
+            sortedArrayElement.textContent = sortedNumbers.join(', ');
+        });
+    </script>
+</body>
+
+</html>
